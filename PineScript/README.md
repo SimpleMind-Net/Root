@@ -18,6 +18,9 @@ The code was changed so that the estimator calculation period window automatical
 In the practical application of swing trade on the Brazilian Stock Exchange (B3), both for shares of companies listed only in Brazil and for BDRs of companies and ETFs listed on American exchanges, these two indicators are interesting, both for identifying anticipated reversal of trends as for price forecast for trade entry and exit.
 
 
-Credits from original sources:
+Credits to original sources:
 * [Linear Regresion Trend Channel Source](https://www.tradingview.com/script/CD7yUWRV-Linear-Regression-Trend-Channel/) - midtownsk8rguy
 * [Nadaraya-Watson Envelope \[LUX\] source](https://www.tradingview.com/script/Iko0E2kL-Nadaraya-Watson-Envelope-LUX/%20) - LuxAlgo
+
+*Copyright: The code may be freely reproduced and altered by the community. It is recommended to cite credits to the author.*
+*Disclaimer: The author is not responsible for the results obtained from applying the code.*
