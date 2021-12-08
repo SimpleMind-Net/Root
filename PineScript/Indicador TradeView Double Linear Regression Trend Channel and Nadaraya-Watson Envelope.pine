@@ -1,0 +1,173 @@
+//@version=4
+
+// This study includes two indicators highly
+// customized via PineScript coding for trend
+// technical analysis in TradeView plattaform.
+// Credits to original sources:
+// Linear Regression Trend Channel - midtownsk8rguy - https://www.tradingview.com/script/CD7yUWRV-Linear-Regression-Trend-Channel/
+// Nadaraya-Watson Envelope [LUX] - LuxAlgo - https://www.tradingview.com/script/Iko0E2kL-Nadaraya-Watson-Envelope-LUX/
+
+study("Double Linear Regression Trend Channel and Nadaraya-Watson Envelope", "Double LRTC & Nadaraya-Watson Envelope",overlay=true,max_lines_count=200,max_bars_back=200)
+
+// LRTC PARAMETER INPUTS
+period      = input(  39, "Period long"        , input.integer, minval=3)
+deviations  = input( 1.6, "Deviations Nr long" , input.float  , minval=0.1, step=0.05)
+period1     = input(  29, "Period short"       , input.integer, minval=3)
+deviations1 = input( 1.6, "Deviation Nr short" , input.float  , minval=0.1, step=0.05)
+extendType  = extend.none
+
+// LRTC color inputs
+upperLineColor  = input(title="Channel Color long" ,  defval="gray"   , options=["blue", "fuchsia", "gray", "orange", "purple", "red", "green", "silver", "white"])
+upperLineColor1 = input(title="Channel Color short",  defval="purple" , options=["blue", "fuchsia", "gray", "orange", "purple", "red", "green", "silver", "white"])
+lowerChannelColor = upperLineColor
+lowerChannelColor1 = upperLineColor1
+
+// Nadaraya-Watson parameter inputs
+h      = input(   8,'Period Nadaraya-Watson')
+mult   = input( 1.80,'Deviations Nr Nadaraya-Watson', minval=0.1, step=0.05)
+src    = input(  hl2,'Source Nadaraya-Watson')
+up_col = color.red
+dn_col = up_col
+
+
+// FUNCTIONS //
+chosenColor(c_)=> c_ == "blue"    ? color.blue    :
+                  c_ == "fuchsia" ? color.fuchsia :
+                  c_ == "gray"    ? color.gray    :
+                  c_ == "orange"  ? color.orange  :
+                  c_ == "purple"  ? color.purple  :
+                  c_ == "red"     ? color.red     :
+                  c_ == "green"   ? color.green   :
+                  c_ == "silver"  ? color.silver  :
+                  c_ == "white"   ? color.white   : #00000000
+
+// DRAW LONG TREND CHANNEL //
+periodMinusOne = period-1
+Ex =  0.0, 
+Ey =  0.0, 
+Ex2 = 0.0, 
+Exy = 0.0, 
+for i=0 to periodMinusOne
+    closeI = nz(close[i]), 
+    Ex  := Ex + i, 
+    Ey  := Ey + closeI,
+    Ex2 := Ex2 + (i * i), 
+    Exy := Exy + (closeI * i)
+ExEx = Ex * Ex, slope = Ex2==ExEx ? 0.0 : (period * Exy - Ex * Ey) / (period * Ex2 - ExEx)
+linearRegression = (Ey - slope * Ex) / period
+intercept = linearRegression + bar_index * slope
+deviation = 0.0, for i=0 to periodMinusOne
+    deviation := deviation + pow(nz(close[i]) - (intercept - slope * (bar_index[i])), 2.0)
+deviation := deviations * sqrt(deviation / periodMinusOne)
+startingPointY = linearRegression + slope * periodMinusOne
+
+// DRAWING LINES SECTION //
+var line upperChannelLine = na  , 
+var line lowerChannelLine = na
+line.delete(upperChannelLine[1]), 
+line.delete(lowerChannelLine[1])
+
+// draw channels
+upperChannelLine  := line.new(bar_index - period + 1, startingPointY + deviation, bar_index, linearRegression + deviation, xloc.bar_index, extendType, chosenColor(upperLineColor)   , line.style_solid , 2)
+lowerChannelLine  := line.new(bar_index - period + 1, startingPointY - deviation, bar_index, linearRegression - deviation, xloc.bar_index, extendType, chosenColor(lowerChannelColor), line.style_solid , 2)
+
+// DRAW SHORT TREND CHANNEL //
+periodMinusOne1 = period1-1
+Ex1  = 0.0, 
+Ey1  = 0.0, 
+Ex21 = 0.0, 
+Exy1 = 0.0, 
+for i1=0 to periodMinusOne1
+    closeI1 = nz(close[i1]), 
+    Ex1 := Ex1 + i1, 
+    Ey1 := Ey1 + closeI1,
+    Ex21 := Ex21 + (i1 * i1), 
+    Exy1 := Exy1 + (closeI1 * i1)
+ExEx1 = Ex1 * Ex1, slope1 = Ex21==ExEx1 ? 0.0 : (period1 * Exy1 - Ex1 * Ey1) / (period1 * Ex21 - ExEx1)
+linearRegression1 = (Ey1 - slope1 * Ex1) / period1
+intercept1 = linearRegression1 + bar_index * slope1
+deviation1 = 0.0, for i1=0 to periodMinusOne1
+    deviation1 := deviation1 + pow(nz(close[i1]) - (intercept1 - slope1 * (bar_index[i1])), 2.0)
+deviation1 := deviations1 * sqrt(deviation1 / periodMinusOne1)
+startingPointY1 = linearRegression1 + slope1 * periodMinusOne1
+
+// DRAWING LINES SECTION //
+var line upperChannelLine1 = na  ,
+var line lowerChannelLine1 = na
+line.delete(upperChannelLine1[1]), 
+line.delete(lowerChannelLine1[1])
+
+// draw channels
+upperChannelLine1  := line.new(bar_index - period1 + 1, startingPointY1 + deviation1, bar_index, linearRegression1 + deviation1, xloc.bar_index, extendType, chosenColor(upperLineColor1)   , line.style_solid , 2)
+lowerChannelLine1  := line.new(bar_index - period1 + 1, startingPointY1 - deviation1, bar_index, linearRegression1 - deviation1, xloc.bar_index, extendType, chosenColor(lowerChannelColor1), line.style_solid , 2)
+
+
+//------------------------------------------------------------------------------------------------------------------
+// Nadaraya-Watson Envelope [LUX]
+// https://www.tradingview.com/script/Iko0E2kL-Nadaraya-Watson-Envelope-LUX/
+// https://www.tradingview.com/script/amRCTgFw-Nadaraya-Watson-Estimator-LUX/
+
+var k = 2
+var upper = array.new_line(0) 
+var lower = array.new_line(0) 
+
+lset(l,x1,y1,x2,y2,col)=>
+    line.set_xy1(l,x1,y1)
+    line.set_xy2(l,x2,y2)
+    line.set_color(l,col)
+    line.set_width(l,3)
+
+if barstate.isfirst
+    for i = 0 to 200/k-1
+        array.push(upper,line.new(na,na,na,na))
+        array.push(lower,line.new(na,na,na,na))
+//----
+line up = na
+line dn = na
+if barstate.islast
+    y = array.new_float(0)
+    
+    length = min(200, bar_index)
+    sum_e = 0.
+    for i = 0 to length-1
+        sum = 0.
+        sumw = 0.
+        
+        for j = 0 to length-1
+            w = exp(-(pow(i-j,2)/(h*h*2)))
+            sum += src[j]*w
+            sumw += w
+        
+        y2 = sum/sumw
+        sum_e += abs(src[i] - y2)
+        array.push(y,y2)
+
+    mae = sum_e/length*mult
+
+    for i = 1 to length-1
+        y2 = array.get(y,i)
+        y1 = array.get(y,i-1)
+        
+        up := array.get(upper,i/k)
+        dn := array.get(lower,i/k)
+
+        // Colorir a linha azul/vermelho em função da inclinação
+        up_col := y2 > y1 ? color.red : color.blue
+        dn_col := up_col
+
+        lset(up,bar_index-i+1,y1 + mae,bar_index-i,y2 + mae,up_col)
+        lset(dn,bar_index-i+1,y1 - mae,bar_index-i,y2 - mae,dn_col)
+
+        if src[i] > y1 + mae and src[i+1] < y1 + mae
+            label.new(bar_index-i,src[i],'▼',color=#00000000,style=label.style_label_down,textcolor=color.red)
+        if src[i] < y1 - mae and src[i+1] > y1 - mae
+            label.new(bar_index-i,src[i],'▲',color=#00000000,style=label.style_label_up,textcolor=color.blue)
+
+// Plot label com valor do canal superior e inferior
+up := array.get(upper,1)
+dn := array.get(lower,1)
+string total_cs = line.get_y2(up) > line.get_y1(up) ? "Cai" : "Sobe"
+total_cs += "\n Hi " + tostring(round(line.get_y1(up),2)) + "\n Lo " + tostring(round(line.get_y1(dn),2))
+
+lab_1 = label.new(x=bar_index+2, y=low, text=total_cs, textcolor=color.white, color=color.navy, style=label.style_label_left)
+label.delete(lab_1[1])
