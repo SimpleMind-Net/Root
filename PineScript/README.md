@@ -3,7 +3,7 @@
 ### 
 This study includes two highly customized indicators via *PineScript* coding for technical stock prices trend analysis in *TradeView plattaform*.
 
-[Sample graph with indicators](PineScript/Nasdaq.PNG)
+
 
 ##### Double Linear Regression Trend Channel
 
