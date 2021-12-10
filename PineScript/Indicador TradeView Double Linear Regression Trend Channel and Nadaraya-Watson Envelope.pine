@@ -1,8 +1,6 @@
 //@version=4
 
-// This study includes two indicators highly
-// customized via PineScript coding for trend
-// technical analysis in TradeView plattaform.
+// This study includes two indicators highly customized via PineScript coding for trend technical analysis in TradeView plattaform.
 // Credits to original sources:
 // Linear Regression Trend Channel - midtownsk8rguy - https://www.tradingview.com/script/CD7yUWRV-Linear-Regression-Trend-Channel/
 // Nadaraya-Watson Envelope [LUX] - LuxAlgo - https://www.tradingview.com/script/Iko0E2kL-Nadaraya-Watson-Envelope-LUX/
