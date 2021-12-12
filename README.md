@@ -1,4 +1,4 @@
-# Read Me - Root
+# Personal archive (Root) - Read Me
 
 The PineScript folder includes code developed for technical analysis of stock prices on the TradeView platform.
 
