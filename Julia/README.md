@@ -11,4 +11,5 @@ This folder contains a set of notebooks written in Julia (1) for the analysis of
 
 ### References
 (1) [https://julialang.org/](https://julialang.org/)
+
 (2) [https://en.wikipedia.org/wiki/Nonparametric_statistics](https://en.wikipedia.org/wiki/Nonparametric_statistics)
