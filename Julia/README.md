@@ -8,7 +8,7 @@ This folder contains a set of notebooks written in Julia (1) for the analysis of
 <p align="center">
     <img width="400" src="https://user-images.githubusercontent.com/63382525/202050742-25e99162-a1cc-4c74-b9da-f9da17283594.png" alt="serie-kernel">
 </p>
-<h6 align="center">Fig.1- Price series graph of the with the regressed curve</h6>
+<h6 align="center">Fig.1- Price series graph with the regressed curve</h6>
 
 <p align="center">
     <img width="400" src="https://user-images.githubusercontent.com/63382525/202050739-17401aef-a6b4-43aa-914e-a00136c00a80.png" alt="histo-retornos-kernel">
