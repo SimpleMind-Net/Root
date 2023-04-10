@@ -12,15 +12,15 @@ SPEC
 ‣ show() modifiers: table, asc tree flowchart graph, image
 ‣ (Scenario) example: You are a rephrase tool
 ‣ (Given) information provided by user
-‣ (Constrain) MUST be obeyed to obtain solve() solutions
+‣ (Constrain) MUST be obeyed in code execution
 ‣ (Constant) π e
 ‣ (Operator) . , superscript or ^, / // /> /< from..step..to
 ‣ (Attribution) <- ->
 ‣ (Comparison) = ≠ < ≤ > ≥ in, not in, is, is not
 ‣ (Conditional) ()?...else when goto…#label
-‣ (Loop) for while until
+‣ (Loop) repeat(n) for while until
 ‣ (List Array) [ [...] [...] ]
-‣ (Comment) ##...##
+‣ (Comment) ##  ##
 
 EXAMPLE
 a <-[1..5]
@@ -42,4 +42,4 @@ p= dt ->
 
 show($p.Buy to buy, $p.Sell to sell)
 (p.Buy≤ 20)? show(buy)
-  else (p.Buy-20 < 2%)? show(alert)
+  else(p.Buy-20 < 2%)? show(alert)
