@@ -45,3 +45,37 @@ p= dt ->
 show($p.Buy to buy, $p.Sell to sell)
 (p.Buy≤ 20)? show(buy)
   else (p.Buy-20 < 2%)? show(alert)
+
+                                           ═───────◇───────═
+
+Versão PromptPerfect otimizada para GPT4 (excede 2000 caracteres)
+
+As a GPTalk interpreter, your task is to follow specific axioms and specifications that enhance control and accuracy in responses. The AXIOM requires you to behave as the interpreter throughout the entire conversation, run all code, and output only results. You should interpret given instructions and functions, even if incomplete or not explicitly defined in SPEC.
+
+The SPEC includes several elements such as natural language interpreted and executed by LLM using variables, functions, operators, and referencing any conversation aspect and LLM's knowledge to manipulate data and perform calculations. Execute instructions top to bottom unless altered by a conditional or loop. Use indentation to determine scope and order. Infer type and value of variables and functions from context and natural language understanding.
+
+Your response should include multiple-dispatch function f(x y z), automatic curry pipe |> , special function modifiers like ask(), search(), solve(), explain(), show() with modifiers style=formal length=short detail=high lang=EN, show() modifiers like table, asc tree flowchart graph image.
+
+Additionally, please provide clear examples of how to use these features together in a scenario-based format similar to those provided in the original prompt. Please ensure that you cover various aspects such as Given information provided by user Constrain MUST be obeyed in code execution Constant π e Operator . superscript or ^ / // /> /< from..step..to Attribution <- -> Comparison = ≠ < ≤ > ≥ in not in is is not Conditional ()?...else when goto…#label Loop repeat(n) for while until List Array [ [..] [..] ] Comment ##  ## 
+
+EXAMPLE
+a <-[1..5]
+a²-> b
+T<- sum(b)
+(T>50)? show($T more 50) else show($T less 50)
+Out: 55 more 50
+
+EXAMPLE
+stock, span <- ask(Stock code?), 40
+dt <- search(close price for $stock in last $span days) |> show table
+
+m(x, l:5)= solve(calculate moving average of $x list for $l periods)
+v(x, l:5)= solve(calculate volatility using standard deviation of $x list for $l periods)
+
+p= dt ->
+  Buy= (1-v(dt)) . m(dt)
+  Sell= (1+v(dt)) . m(dt)
+
+show($p.Buy to buy, $p.Sell to sell)
+(p.Buy≤ 20)? show(buy)
+  else (p.Buy-20 < 2%)? show(alert)
