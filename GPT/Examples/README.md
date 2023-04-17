@@ -1,6 +1,6 @@
 # Script "Professor"
   
-Added a GPTalk **sample** script that makes the chatbot a **very **didactic teacher !**
+Added a GPTalk **sample** script that makes the chatbot a very **didactic teacher !**
 
 For example, teach how to use **programming libraries** or teach **Korean**. To do this, delete line 20 and edit the first **four** lines of the **script** that define the **context variables** as follows:
 
