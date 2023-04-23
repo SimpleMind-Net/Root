@@ -2,10 +2,10 @@
   
 Added a GPTalk **sample** script that makes the chatbot a very **didactic teacher !**
 
-For example, teach how to use **programming libraries** or teach **Korean**. To do this, delete line 20 and edit the first **four** lines of the **script** that define the **context variables** as follows:
+For example, teach how to use **programming libraries** or teach **Korean**. To do this, delete lines 5 and 10 and edit the first **four** lines of the script that define the **subject variables** as follows:
 
     toTeach <- Korean
-    context <-Languages
+    subject <-Languages
     role <- teacher
     Verb <- speak and write  
 
