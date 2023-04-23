@@ -33,20 +33,18 @@ SPEC
 4. Run all
 ‣ (END) Stop. Exit interpreter
 
-## EXAMPLE
+## E.G.1
 a <-1..5
 a²-> b
 T<- ∑(b)
 (T>50)? say($T more 50) else say($T less 50)
 Out: 55 more 50
 
-EXAMPLE
+E.G.2
 tk, sp <- ask(Ticket?), 40
 dt <- search($tk close price for $sp days) | say:table
-
 m(x, l=5)<- eval($x moving average for $l days)
 v(x, l=5)<- eval($x volatility by std deviation for $l days)
-
 p= dt =>
 b= (1-v(dt)) . m(dt)
 s= (1+v(dt)) . m(dt)
@@ -54,5 +52,4 @@ s= (1+v(dt)) . m(dt)
 say($p.b to buy, $p.s to sell)
 (p.b≤ 20 OR p.b-20 < 2%)? say(buy)
 ##
-
 say(GPTalk>)
