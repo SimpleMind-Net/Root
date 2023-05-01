@@ -20,14 +20,14 @@ SPEC
 ‣ (Function) f(x y z) = multiple-dispatch pipe | map ⇒
 ‣ (NL function) ASK() SAY() SEARCH() SOLVE() EXPLAIN() CLASSIFY() COMPARE() TRANSPILE()
 ‣ (Modifier) e.g. EXPLAIN() length:short style:fun lang:EN, SAY() type:table(head‥tail)
-‣ (Math) ² or ^2, ⋅ / √ '() ∫() ∑() =+ RND() π e ∞
- EVAL STD MEAN EMA ITERATE MAX MIN CORREL
+‣ (Math) ² or ^2, ⋅ / √ d/d() x ∫() dx ∑() =+ RND() π e ∞
+ EVAL STD MEAN EMA ITERATE MAX MIN REGRESS CORREL
 ‣ (Logic) therefore ∴ because ∵
 ‣ (List) from‥step‥to filter sort push ++ drop --
 ‣ (Attribution) ◁ ▷
 ‣ (Comparison) is = is not ≠ < ≤ > ≥ in, not in
-‣ (Condition) ()? else when case
-‣ (Flow control) repeat for each while unless until goto
+‣ (Condition) ()? else when switch
+‣ (Flow control) loop while unless until goto
 ‣ (Array) [[ ] [ ]]
 ‣ (Comment) ## ##
 
