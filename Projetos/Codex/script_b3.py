@@ -10,6 +10,7 @@ from tqdm import tqdm
 import os
 from google.colab import drive
 from time import sleep
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import logging
 logging.getLogger('yfinance').setLevel(logging.CRITICAL)
@@ -17,7 +18,6 @@ logging.getLogger('yfinance').setLevel(logging.CRITICAL)
 # =============================================================================
 # DRIVE MOUNT + INCREMENTAL CACHE
 # =============================================================================
-drive.mount("/content/drive")
 CACHE_PATH: Final[str] = "/content/drive/MyDrive/FPT_Screener/incremental_cache.pkl"
 
 
@@ -85,6 +85,10 @@ _KERNEL_U: Final[ndarray] = np.arange(1000, dtype=np.float64) / KERNEL_BW
 _KERNEL_WEIGHTS: Final[ndarray] = np.where(
     _KERNEL_U < 1.0, (1.0 - _KERNEL_U**3) ** 3, 0.0
 )
+
+CPU_COUNT: Final[int] = os.cpu_count() or 1
+MAX_PARALLEL_WORKERS: Final[int] = max(1, min(CPU_COUNT, 8))
+TICKER_TASK_CHUNK: Final[int] = 8
 
 # =============================================================================
 # TICKERS + PARITY
@@ -426,6 +430,32 @@ def apply_kernel_filter_4h(filt_res: list[dict], all_data: dict) -> list[dict]:
     return filtered
 
 
+def chunk_items(items: list[tuple[str, tuple[pd.Series, float]]], size: int) -> list[
+    list[tuple[str, tuple[pd.Series, float]]]
+]:
+    if size <= 0:
+        return [items]
+    return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def process_ticker_chunk(
+    chunk: list[tuple[str, tuple[pd.Series, float]]],
+    usdbrl: float,
+    min_qs: float,
+) -> tuple[list[dict], list[dict]]:
+    all_res: list[dict] = []
+    filt_res: list[dict] = []
+    for ticker, (close_series, price) in chunk:
+        r = process_ticker(ticker, close_series, price)
+        if r is None:
+            continue
+        r = convert_brl(r, usdbrl)
+        all_res.append(r)
+        if r["quality_score"] >= min_qs:
+            filt_res.append(r)
+    return all_res, filt_res
+
+
 # =============================================================================
 # MAIN
 # =============================================================================
@@ -453,6 +483,7 @@ def main() -> pd.DataFrame:
     print(f" - Min data points: {MIN_KERNEL_POINTS}")
     print(" - Trend: Bullish and accelerating (kernel[-1] - kernel[-2]) >0 and >(kernel[-2] - kernel[-3])")
 
+    drive.mount("/content/drive")
     usdbrl = fetch_usdbrl()
     print(f"\nUSD/BRL rate: {fmt_br(usdbrl, 4)}")
 
@@ -467,15 +498,19 @@ def main() -> pd.DataFrame:
     all_res: list[dict] = []
     filt_res: list[dict] = []
     min_qs = CFG["min_quality_score"]
-    for ticker, (close_series, price) in tqdm(
-        all_data.items(), desc="Processing tickers", unit="ticker"
-    ):
-        r = process_ticker(ticker, close_series, price)
-        if r is not None:
-            r = convert_brl(r, usdbrl)
-            all_res.append(r)
-            if r["quality_score"] >= min_qs:
-                filt_res.append(r)
+    items = list(all_data.items())
+    chunks = chunk_items(items, TICKER_TASK_CHUNK)
+    with ThreadPoolExecutor(max_workers=MAX_PARALLEL_WORKERS) as executor:
+        futures = [
+            executor.submit(process_ticker_chunk, chunk, usdbrl, min_qs)
+            for chunk in chunks
+        ]
+        for future in tqdm(
+            as_completed(futures), total=len(futures), desc="Processing tickers", unit="chunk"
+        ):
+            chunk_all, chunk_filt = future.result()
+            all_res.extend(chunk_all)
+            filt_res.extend(chunk_filt)
 
     print(f"\nTotal processed: {len(all_res)} tickers")
     print(f"Passing quality threshold ({min_qs * 100:.0f}%): {len(filt_res)} tickers")
