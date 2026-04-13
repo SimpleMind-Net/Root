@@ -1,0 +1,431 @@
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.1/4.1 MB 126.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.1/97.1 MB 9.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 419.5/419.5 kB 37.5 MB/s eta 0:00:00
+1. Ingesting Data...
+2. Engineering Features...
+3. Building Targets...
+[I 2026-04-13 02:46:41,991] A new study created in memory with name: no-name-c15cb13b-5454-4cc9-a232-e9a25139fcf5
+4. Processing Target_D1...
+[I 2026-04-13 02:47:01,476] Trial 0 finished with value: 0.014121213690215056 and parameters: {'depth': 7, 'learning_rate': 0.03027697850701086}. Best is trial 0 with value: 0.014121213690215056.
+[I 2026-04-13 02:47:16,822] Trial 1 finished with value: 0.014106479468384609 and parameters: {'depth': 5, 'learning_rate': 0.030999867979609255}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:47:33,407] Trial 2 finished with value: 0.014151700564838963 and parameters: {'depth': 6, 'learning_rate': 0.04613213572488136}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:47:51,210] Trial 3 finished with value: 0.014153942721950316 and parameters: {'depth': 6, 'learning_rate': 0.07154163717086381}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:48:11,923] Trial 4 finished with value: 0.014216950110981704 and parameters: {'depth': 8, 'learning_rate': 0.044110238912107795}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:48:33,552] Trial 5 finished with value: 0.014175002539946285 and parameters: {'depth': 8, 'learning_rate': 0.021783194706226944}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:48:47,517] Trial 6 finished with value: 0.014182680721973222 and parameters: {'depth': 4, 'learning_rate': 0.05244671820350705}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:49:07,059] Trial 7 finished with value: 0.014169923468482434 and parameters: {'depth': 7, 'learning_rate': 0.011328029027500878}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:49:21,057] Trial 8 finished with value: 0.014163541502552366 and parameters: {'depth': 4, 'learning_rate': 0.013162895491216485}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:49:36,236] Trial 9 finished with value: 0.014198331815648654 and parameters: {'depth': 5, 'learning_rate': 0.03713444879188696}. Best is trial 1 with value: 0.014106479468384609.
+[I 2026-04-13 02:49:51,519] Trial 10 finished with value: 0.014104457419972306 and parameters: {'depth': 5, 'learning_rate': 0.021773694711877702}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:50:08,061] Trial 11 finished with value: 0.014114397225147459 and parameters: {'depth': 5, 'learning_rate': 0.020618183947946105}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:50:23,372] Trial 12 finished with value: 0.014127697337682677 and parameters: {'depth': 5, 'learning_rate': 0.022748936113399357}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:50:38,771] Trial 13 finished with value: 0.014116810088298242 and parameters: {'depth': 5, 'learning_rate': 0.01720186500162558}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:50:52,869] Trial 14 finished with value: 0.014196858652690308 and parameters: {'depth': 4, 'learning_rate': 0.03023194281887527}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:51:10,232] Trial 15 finished with value: 0.014126070856914804 and parameters: {'depth': 6, 'learning_rate': 0.08739968603024498}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:51:26,123] Trial 16 finished with value: 0.014107411073580397 and parameters: {'depth': 5, 'learning_rate': 0.015599986409636077}. Best is trial 10 with value: 0.014104457419972306.
+[I 2026-04-13 02:51:44,348] Trial 17 finished with value: 0.014101089256069725 and parameters: {'depth': 7, 'learning_rate': 0.025275358584919545}. Best is trial 17 with value: 0.014101089256069725.
+[I 2026-04-13 02:52:03,755] Trial 18 finished with value: 0.014165451240111746 and parameters: {'depth': 7, 'learning_rate': 0.02319198630835981}. Best is trial 17 with value: 0.014101089256069725.
+[I 2026-04-13 02:52:22,009] Trial 19 finished with value: 0.01412803831747248 and parameters: {'depth': 7, 'learning_rate': 0.014622162311243615}. Best is trial 17 with value: 0.014101089256069725.
+[I 2026-04-13 02:52:43,656] Trial 20 finished with value: 0.01411038528509081 and parameters: {'depth': 8, 'learning_rate': 0.010491200977913439}. Best is trial 17 with value: 0.014101089256069725.
+[I 2026-04-13 02:53:00,320] Trial 21 finished with value: 0.01412697244209799 and parameters: {'depth': 6, 'learning_rate': 0.027724446791397534}. Best is trial 17 with value: 0.014101089256069725.
+[I 2026-04-13 02:53:18,291] Trial 22 finished with value: 0.014074151117829815 and parameters: {'depth': 6, 'learning_rate': 0.03920972929398821}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:53:35,121] Trial 23 finished with value: 0.014102945006825775 and parameters: {'depth': 6, 'learning_rate': 0.03690855486396973}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:53:51,732] Trial 24 finished with value: 0.014197493866036463 and parameters: {'depth': 6, 'learning_rate': 0.06040115487502955}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:54:11,206] Trial 25 finished with value: 0.01416885435275235 and parameters: {'depth': 7, 'learning_rate': 0.03845916482195735}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:54:27,935] Trial 26 finished with value: 0.014117564438380265 and parameters: {'depth': 6, 'learning_rate': 0.04114554030400709}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:54:47,537] Trial 27 finished with value: 0.014150151492706549 and parameters: {'depth': 7, 'learning_rate': 0.056358585046153035}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:55:05,903] Trial 28 finished with value: 0.01416984105879608 and parameters: {'depth': 7, 'learning_rate': 0.026915034521102523}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:55:25,459] Trial 29 finished with value: 0.014134410207925711 and parameters: {'depth': 7, 'learning_rate': 0.034249812766621215}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:55:42,155] Trial 30 finished with value: 0.014188758656280194 and parameters: {'depth': 6, 'learning_rate': 0.06691019405455909}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:55:58,848] Trial 31 finished with value: 0.014138285621997407 and parameters: {'depth': 6, 'learning_rate': 0.018572798425379657}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:56:15,546] Trial 32 finished with value: 0.014106103431871716 and parameters: {'depth': 5, 'learning_rate': 0.02836784141407816}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:56:32,253] Trial 33 finished with value: 0.014111258815279436 and parameters: {'depth': 6, 'learning_rate': 0.02493094341442998}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:56:47,619] Trial 34 finished with value: 0.01416825819328216 and parameters: {'depth': 5, 'learning_rate': 0.0332123201096334}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:57:05,087] Trial 35 finished with value: 0.01414209172203808 and parameters: {'depth': 6, 'learning_rate': 0.05019188336572504}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:57:26,300] Trial 36 finished with value: 0.014119077049880371 and parameters: {'depth': 8, 'learning_rate': 0.03344513532988044}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:57:40,477] Trial 37 finished with value: 0.014167139981992316 and parameters: {'depth': 4, 'learning_rate': 0.0459763116099185}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:57:58,602] Trial 38 finished with value: 0.014153596369725241 and parameters: {'depth': 6, 'learning_rate': 0.01923238150421338}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:58:17,071] Trial 39 finished with value: 0.014148525704870985 and parameters: {'depth': 7, 'learning_rate': 0.025070509653194316}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:58:39,072] Trial 40 finished with value: 0.014144725862652639 and parameters: {'depth': 8, 'learning_rate': 0.03003895047468881}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:58:54,576] Trial 41 finished with value: 0.014103447003468153 and parameters: {'depth': 5, 'learning_rate': 0.03752429286751717}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:59:09,949] Trial 42 finished with value: 0.014134409321981739 and parameters: {'depth': 5, 'learning_rate': 0.04019128394289644}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:59:25,007] Trial 43 finished with value: 0.014153631354759055 and parameters: {'depth': 4, 'learning_rate': 0.035616862412427584}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 02:59:40,709] Trial 44 finished with value: 0.014130791875597305 and parameters: {'depth': 5, 'learning_rate': 0.05226408421795047}. Best is trial 22 with value: 0.014074151117829815.
+[I 2026-04-13 03:00:14,806] A new study created in memory with name: no-name-e111fd1d-54ea-426b-87ad-e0f7066fdb4d
+4. Processing Target_D2...
+[I 2026-04-13 03:00:33,869] Trial 0 finished with value: 0.021192102254666136 and parameters: {'depth': 7, 'learning_rate': 0.0100445690095679}. Best is trial 0 with value: 0.021192102254666136.
+[I 2026-04-13 03:00:49,161] Trial 1 finished with value: 0.02119111815938967 and parameters: {'depth': 5, 'learning_rate': 0.02300313568456679}. Best is trial 1 with value: 0.02119111815938967.
+[I 2026-04-13 03:01:03,225] Trial 2 finished with value: 0.021168039528444184 and parameters: {'depth': 4, 'learning_rate': 0.029194033121471483}. Best is trial 2 with value: 0.021168039528444184.
+[I 2026-04-13 03:01:22,901] Trial 3 finished with value: 0.021263844080174666 and parameters: {'depth': 7, 'learning_rate': 0.08503289780385175}. Best is trial 2 with value: 0.021168039528444184.
+[I 2026-04-13 03:01:39,570] Trial 4 finished with value: 0.02127913145270494 and parameters: {'depth': 6, 'learning_rate': 0.07904692938161391}. Best is trial 2 with value: 0.021168039528444184.
+[I 2026-04-13 03:01:53,620] Trial 5 finished with value: 0.021067856524966493 and parameters: {'depth': 4, 'learning_rate': 0.045722388326556535}. Best is trial 5 with value: 0.021067856524966493.
+[I 2026-04-13 03:02:13,219] Trial 6 finished with value: 0.021264955913132117 and parameters: {'depth': 7, 'learning_rate': 0.016470570678046765}. Best is trial 5 with value: 0.021067856524966493.
+[I 2026-04-13 03:02:27,289] Trial 7 finished with value: 0.021001874845988127 and parameters: {'depth': 4, 'learning_rate': 0.033367490367955555}. Best is trial 7 with value: 0.021001874845988127.
+[I 2026-04-13 03:02:49,315] Trial 8 finished with value: 0.021233207354403268 and parameters: {'depth': 8, 'learning_rate': 0.050557757885192525}. Best is trial 7 with value: 0.021001874845988127.
+[I 2026-04-13 03:03:07,790] Trial 9 finished with value: 0.021152684312737657 and parameters: {'depth': 7, 'learning_rate': 0.02791381223948705}. Best is trial 7 with value: 0.021001874845988127.
+[I 2026-04-13 03:03:23,191] Trial 10 finished with value: 0.021102998118490906 and parameters: {'depth': 5, 'learning_rate': 0.04649191826921769}. Best is trial 7 with value: 0.021001874845988127.
+[I 2026-04-13 03:03:37,679] Trial 11 finished with value: 0.021193480615155195 and parameters: {'depth': 4, 'learning_rate': 0.04686913202052443}. Best is trial 7 with value: 0.021001874845988127.
+[I 2026-04-13 03:03:52,698] Trial 12 finished with value: 0.020974770352398347 and parameters: {'depth': 4, 'learning_rate': 0.04005062693665672}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:04:08,128] Trial 13 finished with value: 0.021168229756091974 and parameters: {'depth': 5, 'learning_rate': 0.01876312013145923}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:04:22,151] Trial 14 finished with value: 0.021028495820089702 and parameters: {'depth': 4, 'learning_rate': 0.03562932377083742}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:04:37,143] Trial 15 finished with value: 0.021058908006112625 and parameters: {'depth': 5, 'learning_rate': 0.05947054984142309}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:04:53,560] Trial 16 finished with value: 0.021239550694065835 and parameters: {'depth': 6, 'learning_rate': 0.03555030929535659}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:05:08,048] Trial 17 finished with value: 0.021180853089406957 and parameters: {'depth': 4, 'learning_rate': 0.06453604439901901}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:05:23,235] Trial 18 finished with value: 0.021187886821617822 and parameters: {'depth': 5, 'learning_rate': 0.013435396863929713}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:05:39,597] Trial 19 finished with value: 0.021031852042444104 and parameters: {'depth': 6, 'learning_rate': 0.023913977767325255}. Best is trial 12 with value: 0.020974770352398347.
+[I 2026-04-13 03:05:53,436] Trial 20 finished with value: 0.020940187975580043 and parameters: {'depth': 4, 'learning_rate': 0.09901090057506268}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:06:07,210] Trial 21 finished with value: 0.02114708278818154 and parameters: {'depth': 4, 'learning_rate': 0.06879481840359074}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:06:20,776] Trial 22 finished with value: 0.021159148358125317 and parameters: {'depth': 4, 'learning_rate': 0.0979699715576602}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:06:37,175] Trial 23 finished with value: 0.021118107941996374 and parameters: {'depth': 5, 'learning_rate': 0.038906919557144454}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:06:51,618] Trial 24 finished with value: 0.021168454595446605 and parameters: {'depth': 4, 'learning_rate': 0.023980964879381186}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:07:07,159] Trial 25 finished with value: 0.021085801723945367 and parameters: {'depth': 5, 'learning_rate': 0.09757981125098489}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:07:21,029] Trial 26 finished with value: 0.0213440121004471 and parameters: {'depth': 4, 'learning_rate': 0.055998041202001594}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:07:42,717] Trial 27 finished with value: 0.021157729542461597 and parameters: {'depth': 8, 'learning_rate': 0.04086451171493786}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:07:57,729] Trial 28 finished with value: 0.02113363338413923 and parameters: {'depth': 5, 'learning_rate': 0.030884354038310084}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:08:14,000] Trial 29 finished with value: 0.02112337109037175 and parameters: {'depth': 6, 'learning_rate': 0.014506819528799796}. Best is trial 20 with value: 0.020940187975580043.
+[I 2026-04-13 03:08:27,834] Trial 30 finished with value: 0.02092047931759926 and parameters: {'depth': 4, 'learning_rate': 0.07565248465509461}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:08:41,717] Trial 31 finished with value: 0.02112938830239289 and parameters: {'depth': 4, 'learning_rate': 0.07483239860365003}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:08:56,125] Trial 32 finished with value: 0.02114621442444786 and parameters: {'depth': 4, 'learning_rate': 0.08640762018772313}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:09:10,142] Trial 33 finished with value: 0.021143395641883465 and parameters: {'depth': 4, 'learning_rate': 0.055087641157403236}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:09:25,114] Trial 34 finished with value: 0.021130364721362052 and parameters: {'depth': 5, 'learning_rate': 0.027171611757330513}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:09:38,723] Trial 35 finished with value: 0.021161506855277953 and parameters: {'depth': 4, 'learning_rate': 0.06912458653086788}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:09:52,413] Trial 36 finished with value: 0.021363140238560976 and parameters: {'depth': 4, 'learning_rate': 0.08542189737245282}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:10:06,182] Trial 37 finished with value: 0.02112526684738961 and parameters: {'depth': 4, 'learning_rate': 0.021188376754662012}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:10:21,209] Trial 38 finished with value: 0.021163424231295927 and parameters: {'depth': 5, 'learning_rate': 0.03352112439396049}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:10:34,927] Trial 39 finished with value: 0.02111956090062515 and parameters: {'depth': 4, 'learning_rate': 0.04147051403008849}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:10:51,188] Trial 40 finished with value: 0.021264681866642224 and parameters: {'depth': 5, 'learning_rate': 0.011498051626417776}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:11:05,032] Trial 41 finished with value: 0.020974738039412494 and parameters: {'depth': 4, 'learning_rate': 0.03778788565964775}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:11:18,911] Trial 42 finished with value: 0.02094553393100637 and parameters: {'depth': 4, 'learning_rate': 0.02741212343814934}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:11:32,771] Trial 43 finished with value: 0.021050324709181143 and parameters: {'depth': 4, 'learning_rate': 0.026071019823656696}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:11:46,755] Trial 44 finished with value: 0.02116862341697551 and parameters: {'depth': 4, 'learning_rate': 0.01902379786020213}. Best is trial 30 with value: 0.02092047931759926.
+[I 2026-04-13 03:12:14,338] A new study created in memory with name: no-name-f6f71c50-b36f-44b4-8e77-da6a1bc7543e
+4. Processing Target_D3...
+[I 2026-04-13 03:12:33,272] Trial 0 finished with value: 0.0261864387686258 and parameters: {'depth': 7, 'learning_rate': 0.09059024526687535}. Best is trial 0 with value: 0.0261864387686258.
+[I 2026-04-13 03:12:47,019] Trial 1 finished with value: 0.02591711247723716 and parameters: {'depth': 4, 'learning_rate': 0.010395520897239894}. Best is trial 1 with value: 0.02591711247723716.
+[I 2026-04-13 03:13:00,646] Trial 2 finished with value: 0.025871730935811865 and parameters: {'depth': 4, 'learning_rate': 0.07097385079150659}. Best is trial 2 with value: 0.025871730935811865.
+[I 2026-04-13 03:13:16,965] Trial 3 finished with value: 0.0260232380376216 and parameters: {'depth': 6, 'learning_rate': 0.029040757677325155}. Best is trial 2 with value: 0.025871730935811865.
+[I 2026-04-13 03:13:31,884] Trial 4 finished with value: 0.025889881060365678 and parameters: {'depth': 5, 'learning_rate': 0.012262621050017292}. Best is trial 2 with value: 0.025871730935811865.
+[I 2026-04-13 03:13:49,231] Trial 5 finished with value: 0.025992727549488424 and parameters: {'depth': 6, 'learning_rate': 0.09774456712185785}. Best is trial 2 with value: 0.025871730935811865.
+[I 2026-04-13 03:14:04,204] Trial 6 finished with value: 0.025838550615525827 and parameters: {'depth': 5, 'learning_rate': 0.021293796003345168}. Best is trial 6 with value: 0.025838550615525827.
+[I 2026-04-13 03:14:20,754] Trial 7 finished with value: 0.025900933844383547 and parameters: {'depth': 6, 'learning_rate': 0.023949137768977655}. Best is trial 6 with value: 0.025838550615525827.
+[I 2026-04-13 03:14:37,739] Trial 8 finished with value: 0.025972584772168666 and parameters: {'depth': 6, 'learning_rate': 0.010842346489321947}. Best is trial 6 with value: 0.025838550615525827.
+[I 2026-04-13 03:14:58,455] Trial 9 finished with value: 0.026035022796324664 and parameters: {'depth': 8, 'learning_rate': 0.02995074926311269}. Best is trial 6 with value: 0.025838550615525827.
+[I 2026-04-13 03:15:13,458] Trial 10 finished with value: 0.025779076033104215 and parameters: {'depth': 5, 'learning_rate': 0.018491907865765458}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:15:29,658] Trial 11 finished with value: 0.02589039492802214 and parameters: {'depth': 5, 'learning_rate': 0.017432551623353183}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:15:44,577] Trial 12 finished with value: 0.025885883953224914 and parameters: {'depth': 5, 'learning_rate': 0.04846287718002007}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:15:58,407] Trial 13 finished with value: 0.025970358038269605 and parameters: {'depth': 4, 'learning_rate': 0.017266092565731837}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:16:13,451] Trial 14 finished with value: 0.02593373510837007 and parameters: {'depth': 5, 'learning_rate': 0.019457382819290516}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:16:32,771] Trial 15 finished with value: 0.02592181367403244 and parameters: {'depth': 7, 'learning_rate': 0.046537349846419045}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:16:48,061] Trial 16 finished with value: 0.025931462810773482 and parameters: {'depth': 5, 'learning_rate': 0.014972053892763142}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:17:05,936] Trial 17 finished with value: 0.02599573687009312 and parameters: {'depth': 7, 'learning_rate': 0.04325628253409492}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:17:19,732] Trial 18 finished with value: 0.025848715225121954 and parameters: {'depth': 4, 'learning_rate': 0.022874749815617962}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:17:35,445] Trial 19 finished with value: 0.0259767211594635 and parameters: {'depth': 5, 'learning_rate': 0.038797035870895585}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:17:52,097] Trial 20 finished with value: 0.025900389738922464 and parameters: {'depth': 6, 'learning_rate': 0.014059627484763646}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:18:05,750] Trial 21 finished with value: 0.02581583368662914 and parameters: {'depth': 4, 'learning_rate': 0.021926650900959906}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:18:19,478] Trial 22 finished with value: 0.02582876811152994 and parameters: {'depth': 4, 'learning_rate': 0.022223181155242216}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:18:33,145] Trial 23 finished with value: 0.02589890701121639 and parameters: {'depth': 4, 'learning_rate': 0.025374473692016182}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:18:46,727] Trial 24 finished with value: 0.025946560759391533 and parameters: {'depth': 4, 'learning_rate': 0.03511485306518276}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:19:00,350] Trial 25 finished with value: 0.025892420579403466 and parameters: {'depth': 4, 'learning_rate': 0.015322050891651734}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:19:14,046] Trial 26 finished with value: 0.02586388865648822 and parameters: {'depth': 4, 'learning_rate': 0.026343607150901956}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:19:29,790] Trial 27 finished with value: 0.025949881521306128 and parameters: {'depth': 5, 'learning_rate': 0.02004685344443511}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:19:43,805] Trial 28 finished with value: 0.02612488459805221 and parameters: {'depth': 4, 'learning_rate': 0.03421053613731542}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:20:03,905] Trial 29 finished with value: 0.02612344567602058 and parameters: {'depth': 8, 'learning_rate': 0.017878855139578938}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:20:18,963] Trial 30 finished with value: 0.025893563630906568 and parameters: {'depth': 5, 'learning_rate': 0.058806651840278466}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:20:34,865] Trial 31 finished with value: 0.025951150827943168 and parameters: {'depth': 5, 'learning_rate': 0.021748642678779042}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:20:48,568] Trial 32 finished with value: 0.02591366576230983 and parameters: {'depth': 4, 'learning_rate': 0.01273644781538145}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:21:02,349] Trial 33 finished with value: 0.02587204982030759 and parameters: {'depth': 4, 'learning_rate': 0.02751383527655897}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:21:17,339] Trial 34 finished with value: 0.025897850089424735 and parameters: {'depth': 5, 'learning_rate': 0.020947988475955637}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:21:31,054] Trial 35 finished with value: 0.02592223878254066 and parameters: {'depth': 4, 'learning_rate': 0.016683723559453623}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:21:45,903] Trial 36 finished with value: 0.025861846799530606 and parameters: {'depth': 5, 'learning_rate': 0.023147682443174777}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:22:03,310] Trial 37 finished with value: 0.025895950828671726 and parameters: {'depth': 6, 'learning_rate': 0.03140859686482591}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:22:21,204] Trial 38 finished with value: 0.025987649340510902 and parameters: {'depth': 7, 'learning_rate': 0.019275778289896916}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:22:34,922] Trial 39 finished with value: 0.025917423073817197 and parameters: {'depth': 4, 'learning_rate': 0.01147028526672105}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:22:51,280] Trial 40 finished with value: 0.025895019173935024 and parameters: {'depth': 6, 'learning_rate': 0.01381661845207812}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:23:05,690] Trial 41 finished with value: 0.025948910232937668 and parameters: {'depth': 4, 'learning_rate': 0.0226664820042257}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:23:19,537] Trial 42 finished with value: 0.025942631008755872 and parameters: {'depth': 4, 'learning_rate': 0.024994592311198577}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:23:33,462] Trial 43 finished with value: 0.02588923504930815 and parameters: {'depth': 4, 'learning_rate': 0.027806916467701913}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:23:47,179] Trial 44 finished with value: 0.025896766616823216 and parameters: {'depth': 4, 'learning_rate': 0.018459380376750344}. Best is trial 10 with value: 0.025779076033104215.
+[I 2026-04-13 03:24:16,706] A new study created in memory with name: no-name-9e60b04e-f554-40fb-8f0b-f931440f8a1e
+4. Processing Target_D4...
+[I 2026-04-13 03:24:32,986] Trial 0 finished with value: 0.028926069760920877 and parameters: {'depth': 6, 'learning_rate': 0.03056629549099171}. Best is trial 0 with value: 0.028926069760920877.
+[I 2026-04-13 03:24:51,391] Trial 1 finished with value: 0.028648120324799003 and parameters: {'depth': 7, 'learning_rate': 0.02271043971366225}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:25:08,980] Trial 2 finished with value: 0.0288246821510227 and parameters: {'depth': 7, 'learning_rate': 0.03385640512444625}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:25:27,811] Trial 3 finished with value: 0.028782134673822183 and parameters: {'depth': 7, 'learning_rate': 0.06441000430689446}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:25:42,669] Trial 4 finished with value: 0.028788044071260687 and parameters: {'depth': 5, 'learning_rate': 0.01540262728368613}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:25:57,536] Trial 5 finished with value: 0.028799802997598767 and parameters: {'depth': 5, 'learning_rate': 0.016331133021537547}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:26:11,191] Trial 6 finished with value: 0.02878228076073442 and parameters: {'depth': 4, 'learning_rate': 0.01906460585130896}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:26:24,689] Trial 7 finished with value: 0.02877508947044985 and parameters: {'depth': 4, 'learning_rate': 0.07290388352604295}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:26:39,813] Trial 8 finished with value: 0.028810255337024762 and parameters: {'depth': 5, 'learning_rate': 0.04853049466026586}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:26:56,689] Trial 9 finished with value: 0.028794436119215467 and parameters: {'depth': 6, 'learning_rate': 0.023372490764040108}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:27:16,609] Trial 10 finished with value: 0.02878663989279428 and parameters: {'depth': 8, 'learning_rate': 0.01035821444605366}. Best is trial 1 with value: 0.028648120324799003.
+[I 2026-04-13 03:27:30,696] Trial 11 finished with value: 0.02863586171157486 and parameters: {'depth': 4, 'learning_rate': 0.09568483531590768}. Best is trial 11 with value: 0.02863586171157486.
+[I 2026-04-13 03:27:51,332] Trial 12 finished with value: 0.028825821830810595 and parameters: {'depth': 8, 'learning_rate': 0.09322290527520131}. Best is trial 11 with value: 0.02863586171157486.
+[I 2026-04-13 03:28:10,065] Trial 13 finished with value: 0.028748747817464646 and parameters: {'depth': 7, 'learning_rate': 0.03812526146802878}. Best is trial 11 with value: 0.02863586171157486.
+[I 2026-04-13 03:28:26,207] Trial 14 finished with value: 0.02874128238160174 and parameters: {'depth': 6, 'learning_rate': 0.02403539049574732}. Best is trial 11 with value: 0.02863586171157486.
+[I 2026-04-13 03:28:39,771] Trial 15 finished with value: 0.028564541013049997 and parameters: {'depth': 4, 'learning_rate': 0.09921349430862707}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:28:53,265] Trial 16 finished with value: 0.028715073078989864 and parameters: {'depth': 4, 'learning_rate': 0.09400485445188789}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:29:06,805] Trial 17 finished with value: 0.028824260645041268 and parameters: {'depth': 4, 'learning_rate': 0.05544713814484901}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:29:21,451] Trial 18 finished with value: 0.028685244712181774 and parameters: {'depth': 5, 'learning_rate': 0.07067176594483805}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:29:34,938] Trial 19 finished with value: 0.028844082868880513 and parameters: {'depth': 4, 'learning_rate': 0.045933885942295916}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:29:50,571] Trial 20 finished with value: 0.028763342225468575 and parameters: {'depth': 5, 'learning_rate': 0.09643134979184316}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:30:08,856] Trial 21 finished with value: 0.028806044634249548 and parameters: {'depth': 7, 'learning_rate': 0.08010117922035533}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:30:32,160] Trial 22 finished with value: 0.028911084596233663 and parameters: {'depth': 8, 'learning_rate': 0.026953731525460763}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:30:45,967] Trial 23 finished with value: 0.02886321655181319 and parameters: {'depth': 4, 'learning_rate': 0.012547627329770269}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:31:02,020] Trial 24 finished with value: 0.029012701626028155 and parameters: {'depth': 6, 'learning_rate': 0.057195999665968125}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:31:21,053] Trial 25 finished with value: 0.0287389963795865 and parameters: {'depth': 7, 'learning_rate': 0.04363560969609044}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:31:35,846] Trial 26 finished with value: 0.028829248103208065 and parameters: {'depth': 5, 'learning_rate': 0.02008194662356616}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:31:49,456] Trial 27 finished with value: 0.028691682302309233 and parameters: {'depth': 4, 'learning_rate': 0.08288657299747831}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:32:05,589] Trial 28 finished with value: 0.028927857273993194 and parameters: {'depth': 6, 'learning_rate': 0.03569540834976522}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:32:20,348] Trial 29 finished with value: 0.02888321025842171 and parameters: {'depth': 5, 'learning_rate': 0.02669382147795758}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:32:37,699] Trial 30 finished with value: 0.028935529004066353 and parameters: {'depth': 6, 'learning_rate': 0.05840553073138254}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:32:52,532] Trial 31 finished with value: 0.028586320254337064 and parameters: {'depth': 5, 'learning_rate': 0.06988322256279073}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:33:06,263] Trial 32 finished with value: 0.028639661305284426 and parameters: {'depth': 4, 'learning_rate': 0.08309148431398622}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:33:19,918] Trial 33 finished with value: 0.02879047525688889 and parameters: {'depth': 4, 'learning_rate': 0.08314979711347646}. Best is trial 15 with value: 0.028564541013049997.
+[I 2026-04-13 03:33:33,571] Trial 34 finished with value: 0.028381627969285415 and parameters: {'depth': 4, 'learning_rate': 0.09998388932471255}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:33:48,331] Trial 35 finished with value: 0.028779963270465246 and parameters: {'depth': 5, 'learning_rate': 0.09859787935737727}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:34:01,908] Trial 36 finished with value: 0.028801326062847635 and parameters: {'depth': 4, 'learning_rate': 0.06691628809391448}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:34:17,390] Trial 37 finished with value: 0.02885853732272227 and parameters: {'depth': 5, 'learning_rate': 0.07540840946599649}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:34:31,401] Trial 38 finished with value: 0.028846570915097146 and parameters: {'depth': 4, 'learning_rate': 0.061864692986354164}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:34:45,012] Trial 39 finished with value: 0.02859214401834221 and parameters: {'depth': 4, 'learning_rate': 0.09974754134594532}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:34:59,956] Trial 40 finished with value: 0.02891809870194617 and parameters: {'depth': 5, 'learning_rate': 0.052546745239871136}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:35:13,520] Trial 41 finished with value: 0.02884320873368723 and parameters: {'depth': 4, 'learning_rate': 0.08832098358592678}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:35:27,003] Trial 42 finished with value: 0.028905037617185863 and parameters: {'depth': 4, 'learning_rate': 0.07285284306833668}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:35:40,462] Trial 43 finished with value: 0.028842824194429396 and parameters: {'depth': 4, 'learning_rate': 0.0890834602462398}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:35:55,023] Trial 44 finished with value: 0.028748053074086934 and parameters: {'depth': 5, 'learning_rate': 0.09987891371056509}. Best is trial 34 with value: 0.028381627969285415.
+[I 2026-04-13 03:36:21,744] A new study created in memory with name: no-name-2b354531-1162-4d5c-83d3-69a06026dfd6
+4. Processing Target_D5...
+[I 2026-04-13 03:36:42,423] Trial 0 finished with value: 0.031583798703414025 and parameters: {'depth': 8, 'learning_rate': 0.029696890863600892}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:37:03,229] Trial 1 finished with value: 0.03183814222005132 and parameters: {'depth': 8, 'learning_rate': 0.017420779278826695}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:37:16,378] Trial 2 finished with value: 0.03179459340716762 and parameters: {'depth': 4, 'learning_rate': 0.04548132461790822}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:37:33,682] Trial 3 finished with value: 0.03191216404499648 and parameters: {'depth': 7, 'learning_rate': 0.06684543263481398}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:37:54,394] Trial 4 finished with value: 0.03196069434168571 and parameters: {'depth': 8, 'learning_rate': 0.06644879716478422}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:38:10,015] Trial 5 finished with value: 0.031590656665904264 and parameters: {'depth': 6, 'learning_rate': 0.019742845881565472}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:38:23,267] Trial 6 finished with value: 0.031768189048923014 and parameters: {'depth': 4, 'learning_rate': 0.07004748032369883}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:38:43,938] Trial 7 finished with value: 0.03178417001750386 and parameters: {'depth': 8, 'learning_rate': 0.02153074009921497}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:38:58,459] Trial 8 finished with value: 0.03167974153598588 and parameters: {'depth': 5, 'learning_rate': 0.019961997756592718}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:39:12,797] Trial 9 finished with value: 0.03164816660692626 and parameters: {'depth': 5, 'learning_rate': 0.03647773552177543}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:39:30,029] Trial 10 finished with value: 0.03164182709564259 and parameters: {'depth': 7, 'learning_rate': 0.01325303788303641}. Best is trial 0 with value: 0.031583798703414025.
+[I 2026-04-13 03:39:46,288] Trial 11 finished with value: 0.03143165664540541 and parameters: {'depth': 6, 'learning_rate': 0.026707691280384513}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:40:02,532] Trial 12 finished with value: 0.031924904357490805 and parameters: {'depth': 6, 'learning_rate': 0.03116399414746179}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:40:18,383] Trial 13 finished with value: 0.031901431331775955 and parameters: {'depth': 6, 'learning_rate': 0.010144224670502052}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:40:35,850] Trial 14 finished with value: 0.03179903500541521 and parameters: {'depth': 7, 'learning_rate': 0.031166935708032435}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:40:51,163] Trial 15 finished with value: 0.03179707829454049 and parameters: {'depth': 5, 'learning_rate': 0.04329063899091464}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:41:08,419] Trial 16 finished with value: 0.03183114716895128 and parameters: {'depth': 7, 'learning_rate': 0.025140514225472088}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:41:22,769] Trial 17 finished with value: 0.0316956363674115 and parameters: {'depth': 5, 'learning_rate': 0.04844928976566694}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:41:41,190] Trial 18 finished with value: 0.031749008637223686 and parameters: {'depth': 7, 'learning_rate': 0.09496600729496661}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:41:56,856] Trial 19 finished with value: 0.03160780773114041 and parameters: {'depth': 6, 'learning_rate': 0.02525849508533825}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:42:16,345] Trial 20 finished with value: 0.031845046930917 and parameters: {'depth': 8, 'learning_rate': 0.015046635566878805}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:42:33,191] Trial 21 finished with value: 0.03144202495145756 and parameters: {'depth': 6, 'learning_rate': 0.025707399712306084}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:42:48,883] Trial 22 finished with value: 0.031536883100977305 and parameters: {'depth': 6, 'learning_rate': 0.02566150601342406}. Best is trial 11 with value: 0.03143165664540541.
+[I 2026-04-13 03:43:04,591] Trial 23 finished with value: 0.0314293094157301 and parameters: {'depth': 6, 'learning_rate': 0.025987349922312702}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:43:20,846] Trial 24 finished with value: 0.03184995536066144 and parameters: {'depth': 6, 'learning_rate': 0.03837357101448731}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:43:35,856] Trial 25 finished with value: 0.03180675231378121 and parameters: {'depth': 5, 'learning_rate': 0.015812634301340934}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:43:51,498] Trial 26 finished with value: 0.03162560108431622 and parameters: {'depth': 6, 'learning_rate': 0.023473092287038196}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:44:07,150] Trial 27 finished with value: 0.03183835542684644 and parameters: {'depth': 6, 'learning_rate': 0.03536569393630392}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:44:21,474] Trial 28 finished with value: 0.03179143358899415 and parameters: {'depth': 5, 'learning_rate': 0.011799060824724488}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:44:39,992] Trial 29 finished with value: 0.0317477523119967 and parameters: {'depth': 7, 'learning_rate': 0.027287337756678763}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:44:54,336] Trial 30 finished with value: 0.0315415497946462 and parameters: {'depth': 5, 'learning_rate': 0.05511100212202829}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:45:10,085] Trial 31 finished with value: 0.031608736523525374 and parameters: {'depth': 6, 'learning_rate': 0.028516415680239132}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:45:25,858] Trial 32 finished with value: 0.031664854946565756 and parameters: {'depth': 6, 'learning_rate': 0.01886299887490555}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:45:42,724] Trial 33 finished with value: 0.03163114896217862 and parameters: {'depth': 6, 'learning_rate': 0.023054615866101306}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:45:59,857] Trial 34 finished with value: 0.03175397411769481 and parameters: {'depth': 7, 'learning_rate': 0.033792206106854634}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:46:15,632] Trial 35 finished with value: 0.03172628235599364 and parameters: {'depth': 6, 'learning_rate': 0.016592441311745226}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:46:28,845] Trial 36 finished with value: 0.031718476150271555 and parameters: {'depth': 4, 'learning_rate': 0.028121501230844306}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:46:47,274] Trial 37 finished with value: 0.03206060901733769 and parameters: {'depth': 7, 'learning_rate': 0.040246843590487164}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:47:02,910] Trial 38 finished with value: 0.03163463776492014 and parameters: {'depth': 6, 'learning_rate': 0.022854714860349904}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:47:18,613] Trial 39 finished with value: 0.03149512367540568 and parameters: {'depth': 6, 'learning_rate': 0.019392374687500238}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:47:33,206] Trial 40 finished with value: 0.03176442581534837 and parameters: {'depth': 5, 'learning_rate': 0.018811819978349343}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:47:49,963] Trial 41 finished with value: 0.03165927883417144 and parameters: {'depth': 6, 'learning_rate': 0.020488670677445357}. Best is trial 23 with value: 0.0314293094157301.
+[I 2026-04-13 03:48:05,878] Trial 42 finished with value: 0.0313997863803798 and parameters: {'depth': 6, 'learning_rate': 0.025928797251078488}. Best is trial 42 with value: 0.0313997863803798.
+[I 2026-04-13 03:48:21,807] Trial 43 finished with value: 0.0317997370584287 and parameters: {'depth': 6, 'learning_rate': 0.017782244963985217}. Best is trial 42 with value: 0.0313997863803798.
+[I 2026-04-13 03:48:38,881] Trial 44 finished with value: 0.0317986581027754 and parameters: {'depth': 6, 'learning_rate': 0.03228472708355218}. Best is trial 42 with value: 0.0313997863803798.
+Tabela de Projeções (Top 10) | Erro Médio Global (MAE D+5): 3.1%
+
+
+  
+    
+      Ticker
+      Preço Atual
+      D+1
+      D+2
+      D+3
+      D+4
+      D+5
+      Var % (D+5)
+      Direção
+    
+  
+  
+    
+      CLSC4.SA
+      146.79
+      147.186193
+      146.557054
+      147.187628
+      147.163244
+      146.862810
+      +0.0%
+      ALTA
+    
+    
+      CXCO11.SA
+      73.45
+      73.628827
+      73.436432
+      73.756297
+      73.861195
+      73.485037
+      +0.0%
+      ALTA
+    
+    
+      BTAL11.SA
+      91.50
+      91.675171
+      91.182147
+      91.842381
+      92.034892
+      91.533521
+      +0.0%
+      ALTA
+    
+    
+      VCRA11.SA
+      64.43
+      64.565832
+      64.307545
+      64.665811
+      64.760043
+      64.449514
+      +0.0%
+      ALTA
+    
+    
+      BRCR11.SA
+      47.88
+      47.989123
+      47.692935
+      48.027025
+      48.165217
+      47.894181
+      +0.0%
+      ALTA
+    
+    
+      BBFO11.SA
+      73.83
+      74.004888
+      73.577978
+      74.141425
+      74.271240
+      73.848929
+      +0.0%
+      ALTA
+    
+    
+      OIAG11.SA
+      9.11
+      9.125342
+      9.105350
+      9.137960
+      9.159807
+      9.111956
+      +0.0%
+      ALTA
+    
+    
+      RZAK11.SA
+      85.98
+      86.188202
+      85.862774
+      86.049406
+      86.141984
+      85.996930
+      +0.0%
+      ALTA
+    
+    
+      BODB11.SA
+      8.00
+      8.016577
+      7.994192
+      8.012638
+      8.026779
+      8.001464
+      +0.0%
+      ALTA
+    
+    
+      WHGR11.SA
+      9.65
+      9.672528
+      9.648583
+      9.652546
+      9.668968
+      9.651583
+      +0.0%
+      ALTA
+    
+  
+
+Trajetórias Preditivas (Top 10)---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+/usr/local/lib/python3.12/dist-packages/pandas/core/indexes/base.py in get_loc(self, key)
+   3804         try:
+-> 3805             return self._engine.get_loc(casted_key)
+   3806         except KeyError as err:
+
+index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'Proj. D+1'
+
+The above exception was the direct cause of the following exception:
+
+KeyError                                  Traceback (most recent call last)
+5 frames/tmp/ipykernel_13305/3411023021.py in <cell line: 0>()
+    442 
+    443 if __name__ == "__main__":
+--> 444     main()
+
+/tmp/ipykernel_13305/3411023021.py in main()
+    439         models[target] = tune_and_train(tp, vp)
+    440 
+--> 441     generate_prd_outputs(df, models)
+    442 
+    443 if __name__ == "__main__":
+
+/tmp/ipykernel_13305/3411023021.py in generate_prd_outputs(df_model, models)
+    400             t_now + pd.Timedelta(days=d) for d in CONFIG["HORIZONS"]
+    401         ]
+--> 402         projs = [res_t[f"Proj. D+{d}"] for d in CONFIG["HORIZONS"]]
+    403 
+    404         ax.plot(future_dates, projs, "o--", color="#27ae60", label="Predição")
+
+/usr/local/lib/python3.12/dist-packages/pandas/core/series.py in __getitem__(self, key)
+   1119 
+   1120         elif key_is_scalar:
+-> 1121             return self._get_value(key)
+   1122 
+   1123         # Convert generator to list before going through hashable part
+
+/usr/local/lib/python3.12/dist-packages/pandas/core/series.py in _get_value(self, label, takeable)
+   1235 
+   1236         # Similar to Index.get_value, but we do not fall back to positional
+-> 1237         loc = self.index.get_loc(label)
+   1238 
+   1239         if is_integer(loc):
+
+/usr/local/lib/python3.12/dist-packages/pandas/core/indexes/base.py in get_loc(self, key)
+   3810             ):
+   3811                 raise InvalidIndexError(key)
+-> 3812             raise KeyError(key) from err
+   3813         except TypeError:
+   3814             # If we have a listlike key, _check_indexing_error will raise
+
+KeyError: 'Proj. D+1'
