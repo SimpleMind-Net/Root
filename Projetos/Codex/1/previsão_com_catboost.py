@@ -143,6 +143,33 @@ class FoldIndices:
     val_mask: np.ndarray
 
 
+def base_catboost_params(task_type: str) -> Dict[str, object]:
+    params: Dict[str, object] = {
+        "loss_function": "MAE",
+        "eval_metric": "MAE",
+        "task_type": task_type,
+        "bootstrap_type": "Bernoulli",
+        "verbose": 0,
+        "allow_writing_files": False,
+    }
+    if task_type == "GPU":
+        params["devices"] = "0"
+    return params
+
+
+def validate_catboost_param_compatibility(task_type: str) -> None:
+    params = base_catboost_params(task_type)
+    params["iterations"] = 2
+    params["depth"] = 6
+    params["learning_rate"] = 0.03
+    params["l2_leaf_reg"] = 3.0
+    params["subsample"] = 0.9
+    try:
+        _ = CatBoostRegressor(**params)
+    except Exception as error:
+        raise ValueError(f"Invalid CatBoost configuration: {params}") from error
+
+
 def ingest_market_data(tickers: Sequence[str], macro_tickers: Sequence[str]) -> pd.DataFrame:
     all_tickers = list(dict.fromkeys(list(tickers) + list(macro_tickers)))
     raw_df = yf.download(
@@ -275,6 +302,118 @@ def fold_slices(model_df: pd.DataFrame) -> List[Tuple[pd.DataFrame, pd.DataFrame
             continue
         slices.append((train_df, val_df))
     return slices
+
+
+def choose_catboost_device() -> str:
+    return "GPU" if os.environ.get("COLAB_GPU") else "CPU"
+
+
+def evaluate_random_walk(val_df: pd.DataFrame, target_col: str) -> float:
+    y_val = val_df[target_col].to_numpy()
+    rw_pred = np.zeros(len(y_val), dtype=np.float64)
+    return float(np.mean(np.abs(y_val - rw_pred)))
+
+
+def objective_factory(train_df: pd.DataFrame, val_df: pd.DataFrame, target_col: str):
+    valid_features = [x for x in MODEL_FEATURES if x in train_df.columns]
+    train_pool = Pool(train_df[valid_features], train_df[target_col], cat_features=["Ticker"])
+    val_pool = Pool(val_df[valid_features], val_df[target_col], cat_features=["Ticker"])
+    task_type = choose_catboost_device()
+
+    def objective(trial: optuna.trial.Trial) -> float:
+        params = {
+            "iterations": CONFIG["TUNE_ITERATIONS"],
+            "depth": trial.suggest_int("depth", 5, 9),
+            "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.08, log=True),
+            "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1.0, 10.0),
+            "subsample": trial.suggest_float("subsample", 0.70, 1.00),
+        }
+        params.update(base_catboost_params(task_type))
+
+        model = CatBoostRegressor(**params)
+        model.fit(train_pool, eval_set=val_pool, use_best_model=True, early_stopping_rounds=CONFIG["EARLY_STOP_ROUNDS"])
+        pred = model.predict(val_df[valid_features])
+        return float(np.mean(np.abs(val_df[target_col].to_numpy() - pred)))
+
+    return objective
+
+
+def tune_and_train_for_target(model_df: pd.DataFrame, target_col: str) -> Tuple[CatBoostRegressor, float, float]:
+    slices = fold_slices(model_df)
+    if not slices:
+        raise ValueError(f"No valid walk-forward folds for {target_col}.")
+
+    tune_train, tune_val = slices[-1]
+    study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner(n_warmup_steps=5))
+    study.optimize(
+        objective_factory(tune_train, tune_val, target_col),
+        n_trials=CONFIG["OPTUNA_TRIALS"],
+        timeout=CONFIG["OPTUNA_TIMEOUT_SEC"],
+        show_progress_bar=False,
+    )
+
+    best = study.best_params
+    task_type = choose_catboost_device()
+    final_params = {
+        "iterations": CONFIG["FINAL_ITERATIONS"],
+        "depth": int(best["depth"]),
+        "learning_rate": float(best["learning_rate"]),
+        "l2_leaf_reg": float(best["l2_leaf_reg"]),
+        "subsample": float(best["subsample"]),
+    }
+    final_params.update(base_catboost_params(task_type))
+
+    features = [x for x in MODEL_FEATURES if x in model_df.columns]
+    oof_mae_catboost: List[float] = []
+    oof_mae_rw: List[float] = []
+    for fold_train, fold_val in slices:
+        train_pool = Pool(fold_train[features], fold_train[target_col], cat_features=["Ticker"])
+        val_pool = Pool(fold_val[features], fold_val[target_col], cat_features=["Ticker"])
+        fold_model = CatBoostRegressor(**final_params)
+        fold_model.fit(train_pool, eval_set=val_pool, use_best_model=True, early_stopping_rounds=CONFIG["EARLY_STOP_ROUNDS"])
+        fold_pred = fold_model.predict(fold_val[features])
+        oof_mae_catboost.append(float(np.mean(np.abs(fold_val[target_col].to_numpy() - fold_pred))))
+        oof_mae_rw.append(evaluate_random_walk(fold_val, target_col))
+
+    final_train_pool = Pool(model_df[features], model_df[target_col], cat_features=["Ticker"])
+    final_model = CatBoostRegressor(**final_params)
+    final_model.fit(final_train_pool)
+
+    return final_model, float(np.mean(oof_mae_catboost)), float(np.mean(oof_mae_rw))
+
+
+def build_forecast_table(df_model: pd.DataFrame, models: Dict[str, CatBoostRegressor]) -> pd.DataFrame:
+    valid_features = [x for x in MODEL_FEATURES if x in df_model.columns]
+    latest_rows = df_model.dropna(subset=valid_features).groupby("Ticker", observed=True).tail(1)
+    results: List[Dict[str, float]] = []
+
+    for _, row in latest_rows.iterrows():
+        current_price = float(row["Close"])
+        ticker_data = {"Ticker": row["Ticker"], "Preço Atual": current_price}
+        for horizon in CONFIG["HORIZONS"]:
+            target_col = f"Target_D{horizon}"
+            pred_log = float(models[target_col].predict(row[valid_features].to_frame().T)[0])
+            pred_log = float(np.clip(pred_log, -0.40, 0.40))
+            ticker_data[f"Proj. D+{horizon}"] = float(np.exp(pred_log) * current_price)
+
+        max_h = max(CONFIG["HORIZONS"])
+        p_max = ticker_data[f"Proj. D+{max_h}"]
+        pct = ((p_max / current_price) - 1.0) * 100.0
+        ticker_data[f"Var % (D+{max_h})"] = pct
+        ticker_data["Direção"] = "ALTA" if pct > 0 else "BAIXA"
+        results.append(ticker_data)
+
+    rank_col = f"Var % (D+{max(CONFIG['HORIZONS'])})"
+    return pd.DataFrame(results).sort_values(rank_col, ascending=False)
+
+
+def display_outputs(df_model: pd.DataFrame, report_df: pd.DataFrame, metric_table: pd.DataFrame) -> None:
+    max_h = max(CONFIG["HORIZONS"])
+    rank_col = f"Var % (D+{max_h})"
+
+    display(HTML("<h3>Comparação MAE (Walk-Forward)</h3>"))
+    display(metric_table.style.format({"CatBoost_MAE": "{:.5f}", "RandomWalk_MAE": "{:.5f}", "Gain_vs_RW_%": "{:+.2f}%"}).hide(axis="index"))
+
 
 
 def choose_catboost_device() -> str:
@@ -463,6 +602,9 @@ def main() -> None:
     print("3. Building Targets...")
     df_model = build_targets(df_feat)
     run_validation_tests(df_model)
+    task_type = choose_catboost_device()
+    validate_catboost_param_compatibility(task_type)
+    print(f"[i] CatBoost task_type={task_type}, bootstrap_type=Bernoulli")
 
     model_by_target: Dict[str, CatBoostRegressor] = {}
     metrics: List[Dict[str, float]] = []
