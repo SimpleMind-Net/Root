@@ -80,7 +80,7 @@ VLM_MODELS = {
     },
 }
 
-logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+logging.basicConfig(level=logging.DEBUG, format="%(levelname)s %(message)s")
 log = logging.getLogger("VISTA")
 
 # ── PROMPT template ──────────────────────────────────────────────────────────
@@ -89,20 +89,26 @@ PROMPT = """Three Heikin-Ashi candlestick charts, each with a VWMA overlay line.
 Ignore any text labels, colored markers, or ticker identifiers on the charts.
 
 Data (pre-computed — use directly, do not derive additional statistics):
-Last close: {close}
+Last close price: {close} USD
 5-day log returns: [{r1}, {r2}, {r3}, {r4}, {r5}]
 Price vs VWMA distance: {dist}%
 Momentum z-score: {z}
 
 Treat as a synthetic price series. Do not use prior knowledge of any company, sector, or market event.
 
+IMPORTANT: Your predictions must be in the same price range as the last close ({close} USD).
+For example, if the last close is 283.44, your predictions should be values like 285.50, 287.20, etc.
+NEVER output small decimals like 0.05 or percentages — output actual PRICE VALUES.
+
 Heikin-Ashi signals: consecutive same-color candles = active trend; shrinking bodies with long wicks on both sides = exhaustion zone; first opposite-color candle = potential reversal.
 
 For each timeframe (weekly, then daily, then 15-min), classify the trend as increasing, decreasing, stabilizing, or fluctuating. Assess cross-timeframe alignment. Identify visual support/resistance levels and momentum state. Cross-check against the data: log return direction vs. visual trend, VWMA distance suggesting continuation or mean reversion, z-score indicating normal or extreme momentum.
 
-Predict the next 5 daily closing prices.
-Output ONLY a JSON array — no other text:
-[d1, d2, d3, d4, d5]"""
+Predict the next 5 daily closing prices IN USD.
+Output ONLY a JSON array of 5 price values — no other text:
+[d1, d2, d3, d4, d5]
+
+Example: If last close is 283.44, output something like [285.50, 287.20, 286.80, 289.10, 291.50]"""
 
 
 # =============================================================================
@@ -193,6 +199,8 @@ def validate_and_fix_interval(df: pd.DataFrame, interval: str,
     yfinance sometimes silently returns daily data when intraday fails.
     We detect this by checking the median time-delta between consecutive bars.
     Compares total_seconds() to avoid Timedelta type issues.
+    
+    DEBUG: Added logging for interval validation.
     """
     if interval in ("1wk", "1d"):
         return df  # daily and weekly are reliable
@@ -205,6 +213,9 @@ def validate_and_fix_interval(df: pd.DataFrame, interval: str,
     # Compute median delta in seconds (skip NaNs / gaps from weekends)
     deltas = pd.Series(df.index).diff().dropna()
     median_sec = deltas.median().total_seconds()
+
+    log.debug("DEBUG - Interval check for %s %s: median_delta=%.0fs, expected=%ds",
+              ticker, interval, median_sec, expected_sec[interval])
 
     # If median delta is much larger than expected, data is wrong
     if median_sec > expected_sec[interval] * 10:
@@ -228,6 +239,8 @@ def validate_and_fix_interval(df: pd.DataFrame, interval: str,
                 df2 = df2[ticker]
             deltas2 = pd.Series(df2.index).diff().dropna()
             median_sec2 = deltas2.median().total_seconds()
+            log.debug("DEBUG - Retry interval check for %s %s: median_delta=%.0fs",
+                      ticker, interval, median_sec2)
             if median_sec2 <= expected_sec[interval] * 10:
                 log.info("Retry succeeded for %s %s", ticker, interval)
                 return df2
@@ -358,6 +371,8 @@ def compute_metrics(dc, dv):
     Parameters: dc=daily close, dv=daily volume (float32 arrays).
 
     Returns: close, r1..r5, dist, z
+    
+    DEBUG: Added logging to trace metric values.
     """
     # ── VWMA (daily) ──
     vw_d = _vwma_core(dc, dv, VWMA_WINDOW)
@@ -379,7 +394,7 @@ def compute_metrics(dc, dv):
         sigma = np.std(mom_series)
         z = (mom_series[-1] - mu) / sigma if sigma > 1e-8 else 0.0
 
-    return {
+    result = {
         "close": float(dc[-1]),
         "r1": round(float(r5[0]), 4),
         "r2": round(float(r5[1]), 4),
@@ -389,6 +404,13 @@ def compute_metrics(dc, dv):
         "dist": round(float(dist), 2),
         "z": round(float(z), 2),
     }
+    
+    # DEBUG: Log computed metrics
+    log.info("DEBUG - Computed metrics: close=%.2f, r=[%.4f, %.4f, %.4f, %.4f, %.4f], dist=%.2f%%, z=%.2f",
+             result["close"], result["r1"], result["r2"], result["r3"], 
+             result["r4"], result["r5"], result["dist"], result["z"])
+    
+    return result
 
 
 # =============================================================================
@@ -400,6 +422,8 @@ def parse_vlm_array(text: str) -> list:
 
     Handles: None content, markdown fences, surrounding prose,
     nested brackets, reasoning_content fallback, etc.
+    
+    DEBUG: Added extensive logging to trace parsing issues.
     """
     if text is None:
         raise ValueError("VLM returned None content")
@@ -407,50 +431,78 @@ def parse_vlm_array(text: str) -> list:
     if not isinstance(text, str):
         text = str(text)
 
+    log.info("DEBUG - parse_vlm_array received (%d chars): %s", len(text), text[:300])
+
     # Strip markdown code fences
-    text = re.sub(r"```(?:json)?", "", text).strip()
+    text_clean = re.sub(r"```(?:json)?", "", text).strip()
+    
     # Try every bracket-delimited substring
-    for m in re.finditer(r"\[[^\]]*\]", text):
+    matches_found = []
+    for m in re.finditer(r"\[[^\]]*\]", text_clean):
+        matches_found.append(m.group())
         try:
             arr = json.loads(m.group())
+            log.debug("DEBUG - Found candidate array: %s (type: %s, len: %d)", 
+                     m.group(), type(arr).__name__, len(arr) if isinstance(arr, list) else 0)
             if isinstance(arr, list) and len(arr) == 5:
-                return [float(x) for x in arr]
-        except (json.JSONDecodeError, ValueError, TypeError):
+                result = [float(x) for x in arr]
+                log.info("DEBUG - Successfully parsed: %s", result)
+                return result
+        except (json.JSONDecodeError, ValueError, TypeError) as e:
+            log.debug("DEBUG - Failed to parse %s: %s", m.group(), e)
             continue
+    
     # Fallback: try the whole text as JSON
     try:
-        arr = json.loads(text)
+        arr = json.loads(text_clean)
         if isinstance(arr, list) and len(arr) == 5:
             return [float(x) for x in arr]
     except (json.JSONDecodeError, ValueError, TypeError):
         pass
+    
+    # If we found arrays but none were valid, report them
+    if matches_found:
+        raise ValueError(f"Found {len(matches_found)} array(s) but none valid: {matches_found[:3]}")
+    
     raise ValueError(f"No valid 5-element JSON array found in VLM response: {text[:300]}")
 
 
 def _extract_response_text(resp_json: dict) -> str:
     """Extract the model's text response from an OpenRouter API response.
 
-    Handles reasoning models that may return content=None with the answer
-    in a different field. Tries multiple field names for maximum compatibility.
+    For reasoning models on OpenRouter:
+    - message.content: Contains the FINAL ANSWER (what we want)
+    - message.reasoning_content: Contains chain-of-thought (NOT what we want)
+    
+    IMPORTANT: We must extract 'content', NOT 'reasoning_content'!
     """
     msg = resp_json.get("choices", [{}])[0].get("message", {})
 
-    # Primary: standard content field
+    # DEBUG: Log response structure
+    log.debug("Full VLM response structure: %s", json.dumps(resp_json, indent=2)[:1000])
+    log.debug("Message keys: %s", list(msg.keys()))
+
+    # PRIMARY: Extract from 'content' field (final answer)
     content = msg.get("content")
     if content is not None:
+        log.debug("Extracted from message.content (%d chars)", len(content))
         return content
 
-    # Fallback for reasoning models: try various field names
+    # SECONDARY: Some models put answer in reasoning_content but this is rare
+    # Only use if content is truly None AND reasoning_content looks like JSON
     for key in ("reasoning_content", "reasoning", "thinking"):
         val = msg.get(key)
         if val is not None:
-            log.info("VLM content was None, extracted from message.%s", key)
-            return val
+            # Check if it looks like a JSON array (our expected output)
+            if "[" in val and "]" in val:
+                log.info("Content=None, found JSON-like data in message.%s", key)
+                return val
+            else:
+                log.debug("message.%s exists but is chain-of-thought (no JSON array)", key)
 
     # Last resort: log the full response structure for debugging
     log.warning("VLM returned no usable content. Response keys: %s",
                 list(msg.keys()))
-    log.debug("Full response: %s", json.dumps(resp_json, indent=2)[:500])
     return None
 
 
@@ -491,6 +543,12 @@ def call_vlm(img_paths: list, metrics: dict,
         z=metrics["z"],
     )
 
+    # DEBUG: Log what we're sending to VLM
+    log.info("DEBUG - Metrics sent to VLM: close=%.2f, r=[%.4f, %.4f, %.4f, %.4f, %.4f], dist=%.2f%%, z=%.2f",
+             metrics["close"], metrics["r1"], metrics["r2"], metrics["r3"], 
+             metrics["r4"], metrics["r5"], metrics["dist"], metrics["z"])
+    log.debug("DEBUG - Full prompt text:\\n%s", prompt_text[:500])
+
     # Build content: text + 3 images
     content = [{"type": "text", "text": prompt_text}]
     for p in img_paths:
@@ -517,6 +575,7 @@ def call_vlm(img_paths: list, metrics: dict,
         "X-Title": "VISTA",
     }
 
+    log.info("Calling VLM %s...", mcfg["id"])
     # TASK 1 FIX: Removed trailing space from URL
     r = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -527,9 +586,20 @@ def call_vlm(img_paths: list, metrics: dict,
     r.raise_for_status()
     resp_json = r.json()
 
+    # DEBUG: Log raw response summary
+    usage = resp_json.get("usage", {})
+    log.info("VLM response: tokens used=%d (prompt=%d, completion=%d)",
+             usage.get("total_tokens", 0), 
+             usage.get("prompt_tokens", 0),
+             usage.get("completion_tokens", 0))
+
     # Extract response text, handling reasoning models that return content=None
     raw = _extract_response_text(resp_json)
-    return parse_vlm_array(raw)
+    log.info("DEBUG - Raw VLM output (first 300 chars): %s", raw[:300] if raw else "None")
+    
+    result = parse_vlm_array(raw)
+    log.info("DEBUG - Parsed forecast: %s", result)
+    return result
 
 
 def ensemble_vlm(img_paths: list, metrics: dict, n: int = N_ENSEMBLE) -> list:
